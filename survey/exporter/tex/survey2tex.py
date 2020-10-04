@@ -24,6 +24,7 @@ from survey.models.question import Question
 
 try:
     from survey.exporter.tex.question2tex_sankey import Question2TexSankey
+
     SANKEY = True
 except ImportError:
     SANKEY = False
@@ -143,7 +144,7 @@ class Survey2Tex(Survey2X):
         return self.create_tex()
 
     @property
-    def pdf_filename(self) -> str:
+    def pdf_filename(self) -> Path:
         return Path(self.directory, "{}.{}".format(slugify(self.survey.name), "pdf"))
 
     def generate_pdf(self):
